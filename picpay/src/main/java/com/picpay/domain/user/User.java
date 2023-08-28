@@ -2,6 +2,10 @@ package com.picpay.domain.user;
 
 import java.math.BigDecimal;
 
+import org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter;
+
+import com.picpay.dtos.UserDTO;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
@@ -37,6 +41,18 @@ public class User {
 	private BigDecimal balance;
 	@Enumerated(EnumType.STRING)
 	private UserType userType;
+	
+	public  User(UserDTO data) {
+		
+		this.firstName = data.firstName();
+		this.lastName = data.lastName();
+		this.balance = data.balance();
+		this.email = data.email();
+		this.document = data.document();
+		this.password = data.password();
+		this.userType = data.userType();
+	
+	}
 	
 	
 	
